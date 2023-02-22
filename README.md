@@ -42,6 +42,6 @@ i -> para abrir no emulador iOS
 
 ## :wrench: Tecnologias utilizadas
 
+- Expo
 - TypeScript
-- Expo bare workflow
 - External font by Google
