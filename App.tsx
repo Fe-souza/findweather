@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import { Welcome } from './src/screens/Welcome';
 
 
 export default function App() {
@@ -29,19 +30,8 @@ export default function App() {
     return null;
   }
   return(
-    <View style={styles.container} onLayout={onLayoutRootView}>
-      <Text style={{ fontFamily: 'Overpass-Black' }}>7DaysOfCode de React Native com Expo</Text>
-      <Text style={{ fontFamily: 'Overpass-Black',fontSize:20 }}>Ilda Neta</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Welcome/>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
