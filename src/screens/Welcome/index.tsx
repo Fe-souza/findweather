@@ -5,9 +5,19 @@ import CloudAndThunder from "../../assets/images/cloud-and-thunder.png"
 import Text from "../../componentes/Text"
 import { theme } from "../../theme";
 import Button from "../../componentes/Button";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { IStackRoutes } from "../../routes/stack.routes";
 
+type WelcomeScreenNavigationProp = NativeStackNavigationProp<
+  IStackRoutes,
+  "Welcome"
+>;
 
-export const Welcome = (): JSX.Element  => {
+type IWelcome = {
+  navigation: WelcomeScreenNavigationProp;
+};
+
+export const Welcome = ({ navigation }: IWelcome): JSX.Element  => {
 
     return(
         <Styled.Container>
@@ -37,7 +47,10 @@ export const Welcome = (): JSX.Element  => {
                 backgroundColor={theme.colors.dark300} 
                 borderColor={theme.colors.gray300} 
                 borderRadius={18} 
-                height={54}>
+                height={54}
+                    onPress={() => {
+                    navigation.navigate("Home");
+                }}>
 
                 <Text 
                     color={theme.colors.gray100} 
