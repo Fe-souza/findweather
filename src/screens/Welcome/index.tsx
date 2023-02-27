@@ -1,12 +1,14 @@
 import React from "react"
-import { Image } from "react-native"
+import { AsyncStorage, Image } from "react-native"
 import * as Styled from "./styles";
 import CloudAndThunder from "../../assets/images/cloud-and-thunder.png"
 import Text from "../../componentes/Text"
 import { theme } from "../../theme";
 import Button from "../../componentes/Button";
+
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { IStackRoutes } from "../../routes/stack.routes";
+import { WELCOME } from "../../storage/storage.config";
 
 type WelcomeScreenNavigationProp = NativeStackNavigationProp<
   IStackRoutes,
@@ -17,7 +19,14 @@ type IWelcome = {
   navigation: WelcomeScreenNavigationProp;
 };
 
-export const Welcome = ({ navigation }: IWelcome): JSX.Element  => {
+
+export const Welcome = ({ navigation }: IWelcome): JSX.Element => {
+
+    const handleGoneThroughWelcome = async () => {
+        await AsyncStorage.setItem(WELCOME, "no").catch((error) => {
+          console.log("Error inserting WELCOME into storage: ", error);
+        });
+      };
 
     return(
         <Styled.Container>
@@ -48,9 +57,13 @@ export const Welcome = ({ navigation }: IWelcome): JSX.Element  => {
                 borderColor={theme.colors.gray300} 
                 borderRadius={18} 
                 height={54}
-                    onPress={() => {
+                onPress={() => {
                     navigation.navigate("Home");
-                }}>
+                    handleGoneThroughWelcome();
+                  }}
+                  
+                  >
+                    
 
                 <Text 
                     color={theme.colors.gray100} 
