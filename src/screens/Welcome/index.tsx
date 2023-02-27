@@ -43,7 +43,7 @@ export const Welcome = (): JSX.Element  => {
                     color={theme.colors.gray100} 
                     fontFamily={theme.fontFamily.OverpassRegular} 
                     fontSize={theme.fontSize.md22}
-                    style={{ textAlign: "center" }}
+                    style={{ textAlign: "center", }}
                     
                     >
                 Iniciar

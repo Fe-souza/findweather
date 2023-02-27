@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import { Welcome } from './src/screens/Welcome';
+import { theme } from './src/theme';
+import { Routes } from './src/routes';
 
 
 export default function App() {
@@ -20,17 +20,17 @@ export default function App() {
     'Overpass-Thin': require('./src/assets/fonts/Overpass-Thin.ttf'),
   });
 
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded]);
 
   if (!fontsLoaded) {
     return null;
   }
+  
   return(
-    <Welcome/>
+    <>
+      <StatusBar style="light" backgroundColor={theme.colors.dark}/>
+      <Routes/>
+    </>
+    
   );
 }
 
