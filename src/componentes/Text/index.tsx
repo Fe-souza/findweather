@@ -1,9 +1,9 @@
 import React, { ReactNode } from "react";
-import { TouchableOpacityProps } from "react-native";
+import { TextProps } from "react-native";
 
 import * as Styled from "./styles";
 
-export interface IText extends TouchableOpacityProps {
+export interface IText extends TextProps {
    children: ReactNode;
    color: string;
    fontFamily: string;
