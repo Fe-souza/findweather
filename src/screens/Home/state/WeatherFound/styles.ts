@@ -34,7 +34,15 @@ export const TodayAndNextDaysContainer = styled.View`
   flex-direction: row;
 `;
 
+export const Separator = styled.View`
+  margin-right: 10px;
+`;
 
+
+export const ContainerTemperature = styled.View`
+  flex-direction: row;
+  align-self: center;
+`;
 
 export const NextDaysContainer = styled.TouchableOpacity.attrs(() => ({
   activeOpacity: 0.6
@@ -43,3 +51,4 @@ export const NextDaysContainer = styled.TouchableOpacity.attrs(() => ({
   align-items: center;
   height: 30px;
 `;
+

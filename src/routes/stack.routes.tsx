@@ -14,11 +14,20 @@ export type IStackRoutes = {
   Search: undefined;
 };
 
-export function StackRoutes() {
+interface IStackParam {
+  initialRoute: keyof IStackRoutes;
+}
+
+export const StackRoutes = ({ initialRoute }: IStackParam): JSX.Element => {
+
+  
   return (
       <Navigator screenOptions={{
         headerShown: false,
-      }}>
+        
+      }}
+      initialRouteName={initialRoute}
+      >
         <Screen name="Home" component={Home} />
         <Screen name="Welcome" component={Welcome} />
         <Screen name="Search" component={Search} />

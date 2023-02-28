@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ActivityIndicator, Image } from 'react-native'
+import { ActivityIndicator, AsyncStorage, Image } from 'react-native'
 import { Ionicons } from "@expo/vector-icons";
 import Divider from '../../componentes/Divider';
 import { Header } from '../../componentes/Header';
@@ -11,6 +11,8 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { IStackRoutes } from "../../routes/stack.routes";
 import { ISearchData } from '../../utils/search.interface';
 import { CardResult, ICardResult } from '../../componentes/CardResult';
+
+import { CITY_FIND } from "../../storage/storage.config";
 
 type SearchScreenNavigationProp = NativeStackNavigationProp<
   IStackRoutes,
@@ -33,12 +35,14 @@ export const Search = ({ navigation }: ISearch): JSX.Element => {
   
     const handleCallAPI = async () => {
       FindWeatherAPI.getForecast(textTyped)
-        .then((res) => {
+        .then(async (res) => {
           setIsLoading(true);
           setTextTyped("");
           setResponse(res.data);
   
           const { location, current } = res.data;
+
+          await AsyncStorage.setItem(CITY_FIND, location.name);
   
           setDataCard({
             location: {
