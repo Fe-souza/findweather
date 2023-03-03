@@ -37,7 +37,7 @@ export const Routes = (): JSX.Element => {
 
   return (
     <NavigationContainer>
-      <StackRoutes initialRoute={isUserFirstTime ? "Home" : "Welcome"}/>
+      <StackRoutes initialRoute={isUserFirstTime ? "TabRoutes" : "Welcome"}/>
     </NavigationContainer>
   );
 };
