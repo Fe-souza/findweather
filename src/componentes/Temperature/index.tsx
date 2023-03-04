@@ -9,6 +9,7 @@ interface ITemperature {
   maxTemp: number;
   minTempFontSize: number;
   maxTempFontSize: number;
+  roundSize?:number;
 }
 
 const Temperature = ({
@@ -16,6 +17,7 @@ const Temperature = ({
   maxTemp,
   minTempFontSize,
   maxTempFontSize,
+  roundSize,
 }: ITemperature): JSX.Element => {
   return (
     <Styled.TemperatureContainer>
@@ -25,13 +27,14 @@ const Temperature = ({
         fontSize={maxTempFontSize}
         color={theme.colors.white}
       >
-        {maxTemp}
+         {Math.floor(maxTemp)}
       </Text>
       <Text
         fontFamily={theme.fontFamily.OverpassBold}
-        fontSize={theme.fontSize.lg30}
+        fontSize={roundSize ? roundSize : theme.fontSize.lg30}
         color={theme.colors.white}
-        style={{ paddingBottom: 35 }}
+        style={{ paddingBottom: 35, paddingTop: roundSize ? 0 : 8, }}
+        
       >
         º
       </Text>
@@ -49,7 +52,7 @@ const Temperature = ({
         fontFamily={theme.fontFamily.OverpassSemiBold}
         fontSize={theme.fontSize.md22}
         color={theme.colors.gray100}
-        style={{ paddingBottom: 24 }}
+        style={{ paddingBottom: roundSize ? 10 : 24 }}
       >
         º
       </Text>

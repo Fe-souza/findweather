@@ -13,12 +13,8 @@ import Raining from "../../../../assets/images/raining.png";
 import DropMiniature from "../../../../assets/images/drop-miniature.png";
 import WindMiniature from "../../../../assets/images/wind-miniature.png";
 import RainingCloud from "../../../../assets/images/raining-cloud-miniature.png";
-import ClimateChange from "../../../../assets/images/climate-change.png"
+
 import { ICurrent, IForecastData, ILocation } from "../../../../utils/search.interface";
-
-
-
-
 interface IWeatherFoundData {
   location: ILocation;
   current: ICurrent;
@@ -26,6 +22,7 @@ interface IWeatherFoundData {
     forecastday: Array<IForecastData>;
   };
   date: string | null;
+  nextDays: () => void;
 }
 
 export const WeatherFound = ({
@@ -33,6 +30,7 @@ export const WeatherFound = ({
   current,
   forecast,
   date,
+  nextDays,
 }: IWeatherFoundData): JSX.Element  => {const { humidity, wind_kph } = current;
 const { daily_chance_of_rain } = forecast.forecastday[0].day;
 
@@ -151,13 +149,14 @@ return (
         Hoje
       </Text>
 
-      <Styled.NextDaysContainer>
+      <Styled.NextDaysContainer 
+      onPress={() => nextDays()}>
         <Text
           fontFamily={theme.fontFamily.OverpassRegular}
           fontSize={theme.fontSize.xs16}
           color={theme.colors.gray100}
         >
-          Próximos 7 dias
+          Próximos 5 dias
         </Text>
 
         <SimpleLineIcons
